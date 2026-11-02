@@ -1,6 +1,6 @@
 # EdgeLight-GAN — Scientific Reports Reproducibility Repository
 
-**Manuscript:** EdgeLight-GAN: An Intelligent Lightweight Multi-Resolution Generative Adversarial Network for Real-Time Low-Light Image Enhancement
+**Manuscript:**An edge aware lightweight multiresolution generative adversarial network for low light image enhancement on resource constrained devices
 
 This repository provides the code organization, configuration, training/inference workflow, evaluation utilities, computational profiling, deployment benchmarking, and reproducibility documentation associated with the revised EdgeLight-GAN manuscript.
 
