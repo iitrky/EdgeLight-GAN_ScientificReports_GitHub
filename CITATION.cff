@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper and this archived release."
+title: "EdgeLight-GAN: code for an edge aware lightweight multiresolution generative adversarial network for low light image enhancement on resource constrained devices"
+type: software
+authors:
+  - family-names: Kavitha
+    given-names: T.
+    affiliation: "Saveetha Engineering College, Chennai, India"
+  - family-names: Kathirvel
+    given-names: A.
+    affiliation: "Saveetha Engineering College, Chennai, India"
+doi: 10.5281/zenodo.22052992
+repository-code: "https://github.com/iitrky/EdgeLight-GAN_ScientificReports_GitHub"
+license: MIT
+version: "1.1.0"
+keywords:
+  - low-light image enhancement
+  - generative adversarial network
+  - multi-resolution learning
+  - edge-aware feature fusion
+  - channel gating
+  - edge computing

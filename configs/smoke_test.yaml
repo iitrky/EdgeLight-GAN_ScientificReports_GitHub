@@ -1,0 +1,47 @@
+experiment_name: smoke_test
+
+data:
+  dataset: generic
+  train_root: /tmp/smoke_data/train
+  val_root: /tmp/smoke_data/val
+  image_size: 64
+  num_workers: 0
+
+model:
+  in_channels: 3
+  out_channels: 3
+  stem_channels: 16
+  branch_channels: 32
+  fused_channels: 64
+  num_residual_blocks: 2
+  compressed_channels: 48
+  decoder_channels: 32
+  discriminator_base_channels: 32
+
+train:
+  seed: 42
+  epochs: 1
+  batch_size: 2
+  optimizer: adam
+  lr: 1.0e-4
+  beta1: 0.9
+  beta2: 0.999
+  lr_schedule: cosine
+  checkpoint_every: 1
+  log_every: 1
+  val_every: 1
+  output_dir: /tmp/smoke_run
+
+loss:
+  lambda_rec: 100.0
+  lambda_adv: 1.0
+  lambda_perc: 10.0
+  lambda_ssim: 5.0
+  lambda_edge: 5.0
+  lambda_illum: 2.0
+  adversarial_mode: vanilla
+  use_perceptual: false
+
+eval:
+  metrics: [psnr, ssim]
+  batch_size: 1

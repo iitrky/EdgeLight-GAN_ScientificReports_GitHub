@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install core dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install numpy pillow pyyaml tqdm pytest
+
+      - name: Run unit tests (model shapes / forward passes / loss pipeline)
+        run: python -m pytest tests/ -v
+
+      - name: Training smoke test (synthetic data, 1 epoch, CPU)
+        run: |
+          python - << 'EOF'
+          import numpy as np
+          from pathlib import Path
+          from PIL import Image
+
+          root = Path("/tmp/smoke_data")
+          for split in ["train", "val"]:
+              for kind in ["low", "high"]:
+                  (root / split / kind).mkdir(parents=True, exist_ok=True)
+          rng = np.random.default_rng(0)
+          for split, n in [("train", 4), ("val", 2)]:
+              for i in range(n):
+                  low = (rng.random((96, 96, 3)) * 80).astype(np.uint8)
+                  high = (rng.random((96, 96, 3)) * 255).astype(np.uint8)
+                  Image.fromarray(low).save(root / split / "low" / f"{i}.png")
+                  Image.fromarray(high).save(root / split / "high" / f"{i}.png")
+          EOF
+          python scripts/train.py --config configs/smoke_test.yaml
+          python scripts/inference.py --checkpoint /tmp/smoke_run/best.pt \
+            --input /tmp/smoke_data/val/low --output_dir /tmp/smoke_outputs --image_size 64
+          python scripts/benchmark.py --checkpoint /tmp/smoke_run/best.pt --device cpu --image_size 64

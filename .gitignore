@@ -1,0 +1,29 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# environments
+.venv/
+venv/
+env/
+
+# data / checkpoints / logs (large, not tracked)
+datasets/
+runs/
+outputs/
+*.pt
+*.pth
+*.onnx
+*.log
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/

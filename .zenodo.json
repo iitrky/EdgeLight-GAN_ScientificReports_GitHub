@@ -1,0 +1,15 @@
+{
+  "title": "EdgeLight-GAN: code for an edge aware lightweight multiresolution generative adversarial network for low light image enhancement on resource constrained devices",
+  "upload_type": "software",
+  "description": "PyTorch implementation of EdgeLight-GAN, a lightweight multi-resolution GAN for low-light image enhancement: model definitions, training and evaluation scripts, dataset loaders, losses, and profiling utilities (parameters, FLOPs, latency, memory). Code companion to the manuscript submitted to Scientific Reports.",
+  "creators": [
+    {"name": "Kavitha, T.", "affiliation": "Saveetha Engineering College, Chennai, India"},
+    {"name": "Kathirvel, A.", "affiliation": "Saveetha Engineering College, Chennai, India"}
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": ["low-light image enhancement", "generative adversarial network", "edge computing", "PyTorch"],
+  "related_identifiers": [
+    {"relation": "isSupplementTo", "identifier": "https://github.com/iitrky/EdgeLight-GAN_ScientificReports_GitHub", "scheme": "url"}
+  ]
+}

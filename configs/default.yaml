@@ -1,0 +1,60 @@
+# EdgeLight-GAN default training configuration.
+# Values below are the hyperparameters stated in Sec. 5.1, 5.4 and 5.6 of the
+# revised manuscript: Adam, initial learning rate 1e-4 (Table 18), betas
+# 0.5/0.999, batch size 16, 300 epochs, cosine annealing, and the six loss
+# coefficients listed in Sec. 5.4. The adversarial loss is the standard GAN
+# loss of Eq. (11)-(12) (adversarial_mode: vanilla).
+
+experiment_name: edgelight_gan_lol
+
+# --- Data -------------------------------------------------------------
+data:
+  dataset: lol              # one of: lol, lolv2, sid, medical, remote_sensing, surveillance, generic
+  train_root: ./datasets/LOL/train
+  val_root: ./datasets/LOL/val
+  image_size: 256           # Sec. 5.1 / 5.3
+  num_workers: 4
+
+# --- Model --------------------------------------------------------------
+model:
+  in_channels: 3
+  out_channels: 3
+  stem_channels: 32
+  branch_channels: 64
+  fused_channels: 128
+  num_residual_blocks: 3
+  compressed_channels: 96
+  decoder_channels: 64
+  discriminator_base_channels: 74
+
+# --- Optimization (Sec. 5.4) ---------------------------------------------
+train:
+  seed: 42                  # Sec. 5.1 / 5.6
+  epochs: 300                # Sec. 5.4
+  batch_size: 16              # Sec. 5.4
+  optimizer: adam
+  lr: 1.0e-4                 # Sec. 5.4 / Table 18 sensitivity analysis: best operating point
+  beta1: 0.5
+  beta2: 0.999
+  lr_schedule: cosine         # Sec. 5.4: cosine-annealing schedule
+  checkpoint_every: 10
+  log_every: 50
+  val_every: 5
+  output_dir: ./runs/edgelight_gan_lol
+
+# --- Loss weights (Sec. 4.3-4.8) -----------------------------------------
+# Loss coefficients from Sec. 5.4 of the revised manuscript.
+loss:
+  lambda_rec: 1.0
+  lambda_adv: 0.1
+  lambda_perc: 0.5
+  lambda_ssim: 0.3
+  lambda_edge: 0.4
+  lambda_illum: 0.2
+  adversarial_mode: vanilla
+  use_perceptual: true
+
+# --- Evaluation (Sec. 5.7) ------------------------------------------------
+eval:
+  metrics: [psnr, ssim, lpips, niqe, brisque]
+  batch_size: 1

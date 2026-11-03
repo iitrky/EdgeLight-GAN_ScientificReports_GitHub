@@ -1,0 +1,12 @@
+torch>=2.0
+torchvision>=0.15
+numpy>=1.23
+Pillow>=9.0
+PyYAML>=6.0
+tqdm>=4.65
+lpips>=0.1.4
+pyiqa>=0.1.10
+opencv-python>=4.7
+scipy>=1.10
+scikit-learn>=1.2
+matplotlib>=3.7
