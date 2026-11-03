@@ -9,10 +9,10 @@ authors:
   - family-names: Kathirvel
     given-names: A.
     affiliation: "Saveetha Engineering College, Chennai, India"
-doi: 10.5281/zenodo.22052992
+doi: 10.5281/zenodo.23917544
 repository-code: "https://github.com/iitrky/EdgeLight-GAN_ScientificReports_GitHub"
 license: MIT
-version: "1.1.0"
+version: "1.2.0"
 keywords:
   - low-light image enhancement
   - generative adversarial network

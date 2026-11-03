@@ -12,7 +12,7 @@ T. Kavitha¹\*, Dr. A. Kathirvel²
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c.svg)](https://pytorch.org/)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22052992.svg)](https://doi.org/10.5281/zenodo.22052992)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23917544.svg)](https://doi.org/10.5281/zenodo.23917544)
 
 
 This repository is the official code companion to the manuscript submitted to
@@ -450,7 +450,7 @@ If you use this code, please cite the paper:
   year    = {2026},
   note    = {Manuscript revision R2},
   url     = {https://github.com/iitrky/EdgeLight-GAN_ScientificReports_GitHub},
-  doi     = {10.5281/zenodo.22052992}
+  doi     = {10.5281/zenodo.23917544}
 }
 ```
 
@@ -462,7 +462,7 @@ The `doi` field above is the Zenodo software DOI. Update `year`, `volume`, and `
 > evaluation scripts, reproducibility utilities, and deployment benchmarking
 > scripts for EdgeLight-GAN are publicly available in the project
 > repository **`https://github.com/iitrky/EdgeLight-GAN_ScientificReports_GitHub`** and are
-> archived on Zenodo at **`https://doi.org/10.5281/zenodo.22052992`**. The
+> archived on Zenodo at **`https://doi.org/10.5281/zenodo.23917544`**. The
 > repository contains a PyTorch implementation of the method described in the
 > paper, together with instructions for training, evaluation, computational
 > profiling, and edge-device benchmarking.
